@@ -50,6 +50,7 @@ int game_run()
     }
     game_story_end();
 }
+
 int game_start()
 {
     GAME_BASE_DEBUG("game_start\n\r");      //这里优化可以用注册形式 形成一个外围独立模块 在不打断程序正常模式下 要不然log越来越多 而且没用
