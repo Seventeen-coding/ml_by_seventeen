@@ -2,14 +2,9 @@
 
 
 //除了用if和switch选择模块还有什么更好方法判断呢?
-void game_test_run(int module)
+void game_test_run()
 {
-    switch(module)
-    {
-    case GAME_TEST_BASE:
         game_test_base();
-        break;
-    }
 }
 
 

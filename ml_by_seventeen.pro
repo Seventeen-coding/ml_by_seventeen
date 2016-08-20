@@ -40,11 +40,15 @@ SOURCES += src/mielong2014050302.c \
     game/game_key.c \
     game/game_story.c \
     game/game_test.c \
-    node/welcome/map/welcome_map.c \
     game/game_node.c \
     game/game_map.c \
-    node/welcome/welcome.c \
-    node/welcome/map/welcome_movie_map.c
+    map/game_map_init.c \
+    node/game_node_init.c \
+    list/game_story_list_init.c \
+    story/welcome/welcome_story.c \
+    map/welcome/welcome_map.c \
+    map/welcome/welcome_movie_map.c \
+    node/welcome/welcome_node.c
 
 
 include(deployment.pri)
@@ -82,7 +86,6 @@ HEADERS += \
     data/include/skill_data.h \
     data/include/data.h \
     list/list.h \
-    init_game.h \
     window/include/fight_window.h \
     map/include/fight_map.h \
     data/include/fight_data.h \
@@ -99,4 +102,21 @@ HEADERS += \
     node/welcome/map/welcome_map.h \
     node/welcome/welcome_private.h \
     node/welcome/welcome.h \
-    node/welcome/map/welcome_movie_map.h
+    node/welcome/map/welcome_movie_map.h \
+    map/welcome/map/welcome_map.h \
+    map/welcome/map/welcome_movie_map.h \
+    map/game_map_config.h \
+    map/game_map_init.h \
+    story/include/game_story_config.h \
+    story/include/game_story_init.h \
+    node/game_node_config.h \
+    node/game_node_init.h \
+    list/game_story_list_init.h \
+    list/game_story_list_config.h \
+    story/welcome/welcome_story.h \
+    story/game_story_config.h \
+    story/game_story_init.h \
+    game/game_list.h \
+    node/welcome/welcome_node.h \
+    map/welcome/welcome_map.h \
+    map/welcome/welcome_movie_map.h

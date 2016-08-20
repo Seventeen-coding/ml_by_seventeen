@@ -9,7 +9,7 @@
 
 #include "game/game_goble.h"
 
-#include "node/welcome/welcome.h"
+#include "game/game_list.h"
 
 int game_sotry_run(game_story_t  story);
 

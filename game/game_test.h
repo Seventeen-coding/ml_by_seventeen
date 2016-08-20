@@ -18,7 +18,7 @@ game_map_t test_map;
 
 
 //当然这个测试可以用int型选择对应的调试模块
-void game_test_run(int);
+void game_test_run();
 void game_test_base();
 
 

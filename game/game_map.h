@@ -10,8 +10,6 @@ typedef  int (* m_init_handle)(void);
 typedef  int (*m_show_handle)(void);
 typedef  int (*m_select_handle)(char );
 
-
-
 typedef struct{
     m_handle                map_handle;
     m_init_handle       _init;

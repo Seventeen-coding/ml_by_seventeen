@@ -1,4 +1,5 @@
 ﻿#include "game/game_story.h"
+#include "game/game_goble.h"
 
 game_story_list_t *game_story_list = NULL;
 
@@ -28,9 +29,10 @@ int game_story_init(game_story_list_t *list)
 
 int game_story_has_next()
 {
-    if(game_story_list->next == NULL)    return -1;
+ //   if(list->next == NULL)    return -1;
     return 0;
 }
+
 int  game_remove_story( game_story_t  * stoty)
 {
 
@@ -43,12 +45,19 @@ int game_story_begin()
 }
 int game_story_end()
 {
-
+    //完成了所有故事 游戏结束
+    if(game_story_has_next() != 0)  return GAME_FINISH;
+    game_story_list->next;
 
 }
-int game_story_run()
+
+int game_story_run(game_story_t *story)
 {
-
-
+    int status = game_status_get();
+    while(status != GAME_OVER &&  status != GAME_STORY_FINISH)
+    {
+        status = game_node_run(story->game_head_node);
+    }
+    return status;
 }
 

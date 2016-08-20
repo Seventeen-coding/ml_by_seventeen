@@ -1,0 +1,5 @@
+﻿#ifndef GAME_STORY_INIT_H
+#define GAME_STORY_INIT_H
+
+#endif // GAME_STORY_INIT_H
+
