@@ -17,6 +17,8 @@ typedef struct{
     m_select_handle  _select;
 }game_map_t;
 
+int game_map_begin();
+int game_map_end();
 int game_map_run(game_map_t *map);
 
 ///int game_map_result();

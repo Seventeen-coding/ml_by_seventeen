@@ -13,5 +13,12 @@ int game_map_run(game_map_t *map)
     }
     return status;
 }
+int game_map_begin(game_map_t *map)
+{
 
+}
+int game_map_end(game_map_t *map)
+{
+
+}
 

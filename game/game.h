@@ -2,14 +2,10 @@
 #define GAME_H
 
 #include "game/game_key.h"
-
 #include "game/game_debug.h"
-
 #include "game/game_test.h"
-
 #include "game/game_goble.h"
-
-#include "game/game_list.h"
+#include "list/game_story_list_init.h"
 
 int game_sotry_run(game_story_t  story);
 

@@ -22,7 +22,7 @@ int game_init()
         //do something init
         /*现在的游戏不需要游戏前进行 map init*/
         //game_map_init();            //这些配置不应该在game_map.h上  应写map文件夹上
-        game_node_init();           //因为这些是对象生成 如果放在game需要用一个配置链接需要
+        //game_node_init();           //因为这些是对象生成 如果放在game需要用一个配置链接需要
         // game_story_init();           //初始化的对象
         // game_story_list_init();
         //  game_set_map( game_welcome);
@@ -43,7 +43,11 @@ int game_config()
     int status;
     do{
         //do something config
-        // gobel_game_config.game_story_list = game_story_list_t;
+        /*可以用一个函数set*/
+        gobel_game_config.game_story_list = game_story_list_get();
+        gobel_game_config.game_current_story = (game_story_t  *)gobel_game_config.game_story_list->data;
+        gobel_game_config.game_current_node = gobel_game_config.game_current_story->game_current_node;
+        gobel_game_config.game_current_map = gobel_game_config.game_current_node->game_current_map;
         //
         status = GAME_CONFIG_FINISH;
     }while(0);
@@ -58,11 +62,11 @@ int game_run()
     //start game_story_list
     do
     {
-        game_story_begin();
+        game_story_begin(gobel_game_config.game_current_story);
         //游戏程序越来越复杂时以后优化把这部分替换 game_node_run
         //由于框架不针对实例化对象
         game_story_run(gobel_game_config.game_current_story);
-        game_story_end();
+        game_story_end(gobel_game_config.game_current_story);
     } while(status != GAME_OVER &&  status != GMAE_STORY_LIST_FINISH);
     //end game_story_list
 }
@@ -75,15 +79,13 @@ int game_start()
 {
     GAME_BASE_DEBUG("game_start\n\r");      //这里优化可以用注册形式 形成一个外围独立模块 在不打断程序正常模式下 要不然log越来越多 而且没用
     int status  = GAME_START;
-    int ret;
-    game_node_t  *node ;
     do{
         game_status_set(status);
         status = game_init();
         //welcome界面 好比load 存档 设置模式 音效 文字 图形等等
         status = game_config();          //  在这里定义测试模式 或者用一个 welcome界面
     }while(0);
-    return ret;
+    return status;
 }
 
 int game_stop()

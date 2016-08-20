@@ -6,31 +6,35 @@
 #include "game/game_story.h"
 
 typedef enum {
-    GAME_EXIT = -1,
-    GAME_OVER = 0,
-    GAME_START,
-    GAME_STOP,
-    GAME_RUNNING,
-    GAME_MAP_INIT_ERROR,
-    GAME_MAP_INIT_OK,
-    GAME_NODE_INIT_ERROR,
-    GAME_NODE_INIT_OK,
-    GAME_STORY_INIT_ERROR,
-    GAME_STORY_INIT_OK,
-    GAME_INIT_ERROR,
-    GAME_INIT_FINISH,
-    GAME_CONFIG_ERROR,
-    GAME_CONFIG_FINISH,
+    GAME_EXIT = -1,// -1
+    GAME_OVER = 0,// 0
+    GAME_START,   //1
+    GAME_STOP,//  2
+    GAME_RUNNING,//   3
+    GAME_MAP_INIT_ERROR,// 4
+    GAME_MAP_INIT_OK,// 5
+    GAME_NODE_INIT_ERROR,//6
+    GAME_NODE_INIT_OK,//7
+    GAME_STORY_INIT_ERROR,//8
+    GAME_STORY_INIT_OK,//9
+    GAME_INIT_ERROR,//10
+    GAME_INIT_FINISH,//11
+    GAME_CONFIG_ERROR,//12
+    GAME_CONFIG_FINISH,//13
     //由于在这里开始之前配置完毕 在这里以后都要确保是正确没有error
-    GAME_MAP_FINISH,
-    GAME_NODE_FINISH,
-    GAME_STORY_FINISH,
-    GMAE_STORY_LIST_FINISH,
-    GAME_FINISH,
+    GAME_MAP_FINISH,//    14
+    GAME_NODE_FINISH,//15
+    GAME_STORY_FINISH,//16
+    GMAE_STORY_LIST_FINISH,//17
+    GAME_FINISH,//18
 
     GAME_TEST
 }game_status_t;
 
+typedef enum {
+    GAME_RET_ERROR = -1,
+    GAME_RET_OK
+}game_ret_t;
 /*动态最好用指针 */
 
 struct {

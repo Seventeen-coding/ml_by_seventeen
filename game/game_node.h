@@ -5,12 +5,15 @@
 #include "game_map.h"
 
 typedef struct{
-    game_map_list_node_t  map_head;
-
-    game_map_t* game_current_map;
+    game_map_list_node_t  *map_head;
+    game_map_t*  game_current_map;
 }game_node_t;
 
+int game_node_begin();
+int game_node_end();
 int game_node_run(game_node_t *node);
+int game_node_map_has_next(game_node_t *node);
+
 
 #endif // GAME_NODE_H
 

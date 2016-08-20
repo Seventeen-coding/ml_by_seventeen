@@ -13,7 +13,7 @@ typedef struct{
 int game_story_begin();
 int game_story_end();
 int game_story_run(game_story_t *story);
-int game_story_has_next();
+int game_story_node_has_next(game_story_t *story);
 
 #endif // GAME_STORY_H
 
