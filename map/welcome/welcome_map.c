@@ -42,5 +42,6 @@ int welcome_map_show(void)
 int welcome_map_select(char key)
 {
     GAME_BASE_DEBUG("welcome_select : %c\r\n",key);
+    if(key == '1') return GAME_MAP_FINISH;  //for test
     return GAME_RUNNING;
 }

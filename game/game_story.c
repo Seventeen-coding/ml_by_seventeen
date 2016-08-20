@@ -33,32 +33,41 @@ int  game_remove_story( game_story_t  * stoty)
 
 
 }
-int game_story_begin()
+int game_story_begin(game_story_t  * story)
 {
+    GAME_BASE_DEBUG("begin_story: %0x\r\n",story);
+
 }
 int game_story_end(game_story_t * story)
 {
+    GAME_BASE_DEBUG("end_story: %0x\r\n",story);
+    game_node_t *next_node = game_story_node_has_next(story);
     //完成了所有故事 游戏结束
-    if(game_story_node_has_next(story) == GAME_STORY_FINISH)  return GAME_STORY_FINISH;
-
-
+    if(next_node == NULL)  return GAME_STORY_FINISH;
+    story->game_current_node = next_node;
+    return GAME_RUNNING;
 }
 
 int game_story_node_has_next(game_story_t * story)
 {
-    if(game_node_map_has_next(story->game_current_node))    return -1;
-    return 0;
+    game_node_list_node_t   *node =  list_find_by_data(story->node_head,story->game_current_node)->next;
+    if(node == NULL) return GAME_STORY_FINISH;
+    story->game_current_node = node->data;
+    return GAME_RUNNING;
 }
 
 int game_story_run(game_story_t *story)
 {
     int status = game_status_get();
+    //game_story_begin(story);
     while(status != GAME_OVER &&  status != GAME_STORY_FINISH)
     {
-        game_node_begin(story->game_current_node);
         status = game_node_run(story->game_current_node);
-        game_node_end(story->game_current_node);
+        if(status == GAME_OVER) break;
+        status = game_story_node_has_next(story) ;
+        game_status_set(status);
     }
+    //game_story_end(story);
     return status;
 }
 

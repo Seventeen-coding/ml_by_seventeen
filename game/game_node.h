@@ -9,8 +9,8 @@ typedef struct{
     game_map_t*  game_current_map;
 }game_node_t;
 
-int game_node_begin();
-int game_node_end();
+int game_node_begin(game_node_t *node);
+int game_node_end(game_node_t *node);
 int game_node_run(game_node_t *node);
 int game_node_map_has_next(game_node_t *node);
 

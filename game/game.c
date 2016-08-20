@@ -60,14 +60,15 @@ int game_run()
     if(game_status_get() == GAME_OVER)  return GAME_OVER;     //可以用switch多种选择
     int status;
     //start game_story_list
+    game_story_begin(gobel_game_config.game_current_story);
     do
     {
-        game_story_begin(gobel_game_config.game_current_story);
         //游戏程序越来越复杂时以后优化把这部分替换 game_node_run
         //由于框架不针对实例化对象
-        game_story_run(gobel_game_config.game_current_story);
-        game_story_end(gobel_game_config.game_current_story);
-    } while(status != GAME_OVER &&  status != GMAE_STORY_LIST_FINISH);
+        status = game_story_run(gobel_game_config.game_current_story);
+        game_status_set(status);
+    } while(status != GAME_OVER &&  status != GAME_STORY_FINISH);
+    game_story_end(gobel_game_config.game_current_story);
     //end game_story_list
 }
 /*

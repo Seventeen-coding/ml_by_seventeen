@@ -41,5 +41,6 @@ int welcome_movie_map_show(void)
 int welcome_movie_map_select(char key)
 {
     GAME_BASE_DEBUG("welcome_movie_select : %c\r\n",key);
+    if(key == '1')  return GAME_MAP_FINISH;
     return GAME_MAP_FINISH;
 }

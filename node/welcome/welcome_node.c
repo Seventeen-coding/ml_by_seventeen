@@ -25,7 +25,7 @@ int welcome_node_init()
     /*get map*/
     map  = welcome_map_get();
     welcome_node->game_current_map = map;
-    map_list_node = map;
+    map_list_node->data = map;
     map  = welcome_movie_map_get();
     list_insert_after(map_list_node, map);
 
