@@ -2,6 +2,8 @@
 #include "game/game_goble.h"
 #include "game/game_debug.h"
 
+#include "welcome_map.h"
+
 game_map_t *map ;
 int welcome_movie_map_handle(void);
 int welcome_movie_map_show(void);
@@ -39,8 +41,6 @@ int welcome_movie_map_show(void)
 int welcome_movie_map_select(char key)
 {
     GAME_BASE_DEBUG("welcome_movie_select : %c\r\n",key);
-    if(key == '1')      {
-        return GAME_MAP_FINISH;
-    }
-    return GAME_RUNNING;
+    game_map_set(welcome_map_get());    //在这里处理换图片不太好  如果要做好这里要牵连很多东西
+    return GAME_MAP_FINISH;
 }

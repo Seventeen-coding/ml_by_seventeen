@@ -12,7 +12,7 @@ void errdy(char etext[],char e_title[],char e_class[],int clsup);
 
 
 
-void cursor_goto(int x,int y);
+void gotoXY(int x, int y);
 
 
 

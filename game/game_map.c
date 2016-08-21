@@ -4,7 +4,7 @@
 //外后需要用handle处理更好扩展
 int game_map_run(game_map_t *map)
 {
-    int status = game_status_get();
+    int status = GAME_RUNNING;
     game_map_begin(map);
     while(status  != GAME_MAP_FINISH && status != GAME_OVER)
     {

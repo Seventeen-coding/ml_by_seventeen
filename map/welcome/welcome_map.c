@@ -1,4 +1,4 @@
-Ôªø
+
 #include "welcome_map.h"
 #include "game/game_goble.h"
 #include "game/game_debug.h"
@@ -7,9 +7,12 @@
 struct{
     game_map_t *map;
     //window
-    w_text_t*   text;
-    w_text_t*   text1;
-    w_text_t*   text2;
+    w_text_t*   top;
+    w_text_t*   title;
+    w_text_t*   menu1;
+    w_text_t*   menu2;
+    w_text_t*   menu3;
+    w_text_t*   bottom;
 }welcome_map;
 
 int welcome_map_handle(void);
@@ -34,18 +37,29 @@ int welcome_map_init()
     welcome_map.map->_show = welcome_map_show;
     welcome_map.map->_select = welcome_map_select;
 
-    welcome_map.text = window_create_text(NULL);
-    window_set_text(welcome_map.text,"helloworld 1 2 3 4 5 6 7 \r\n");
-    window_set_position(welcome_map.text->window,10,10);
+    welcome_map.top = window_create_text(NULL);
+    window_set_text(welcome_map.top,"************************************");
+    window_set_position(welcome_map.top->window,0,0);
 
-    welcome_map.text1 = window_create_text(NULL);
-    window_set_text(welcome_map.text1,"helloworld 1  \r\n");
-    window_set_position(welcome_map.text1->window,2,2);
+    welcome_map.title = window_create_text(NULL);
+    window_set_text(welcome_map.title,"    °æ√¡˙¥´Àµ°ø\n");
+    window_set_position(welcome_map.title->window,5,3);
 
-    welcome_map.text2 = window_create_text(NULL);
-    window_set_text(welcome_map.text2,"helloworld 2 \r\n");
-    window_set_position(welcome_map.text2->window,3,3);
+    welcome_map.menu1 = window_create_text(NULL);
+    window_set_text(welcome_map.menu1,"[A]--–¬µƒ’˜≥Ã\n");
+    window_set_position(welcome_map.menu1->window,5,5);
 
+    welcome_map.menu2 = window_create_text(NULL);
+    window_set_text(welcome_map.menu2,"[B]--æ…µƒªÿ“‰\n");
+    window_set_position(welcome_map.menu2->window,5,6);
+
+    welcome_map.menu3 = window_create_text(NULL);
+    window_set_text(welcome_map.menu3,"[C]--“˛æ”…Ω¡÷\n");
+    window_set_position(welcome_map.menu3->window,5,7);
+
+    welcome_map.bottom = window_create_text(NULL);
+    window_set_text(welcome_map.bottom,"************************************");
+    window_set_position(welcome_map.bottom->window,0,10);
     return 0;   //INIT_OK
 }
 //int welcome_handle(void)
@@ -56,9 +70,13 @@ int welcome_map_init()
 int welcome_map_show(void)
 {
     GAME_BASE_DEBUG("welcome_show\r\n");
-    window_show_text(welcome_map.text);
-    window_show_text(welcome_map.text1);
-    window_show_text(welcome_map.text2);
+    system("cls");//«Â∆¡
+    window_show_text(welcome_map.top);
+    window_show_text(welcome_map.title);
+    window_show_text(welcome_map.menu1);
+    window_show_text(welcome_map.menu2);
+    window_show_text(welcome_map.menu3);
+    window_show_text(welcome_map.bottom);
 }
 
 int welcome_map_select(char key)

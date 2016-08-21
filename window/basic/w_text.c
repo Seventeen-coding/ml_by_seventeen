@@ -49,7 +49,8 @@ static int __hide()
 
 int     window_show_text(w_text_t*text)
 {
-        cursor_goto(text->window->__x,text->window->__y);
+        system("color 30");         //以后可以用不同的颜色去表示
+        gotoXY(text->window->__x,text->window->__y);
         printf("%s",text->data.text);
         return 0;
 }
