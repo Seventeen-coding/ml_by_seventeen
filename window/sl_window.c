@@ -1,6 +1,6 @@
 
 #include "window/include/sl_window.h"
-
+#if 0
 void Show_Save_Load_window()
 {
     system("cls");
@@ -24,3 +24,4 @@ void Show_Save_window()
     system("cls");//«Â∆¡
     btdy("-","°æµµ∞∏¥Ê¥¢°ø");
 }
+#endif

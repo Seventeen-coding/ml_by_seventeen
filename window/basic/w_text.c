@@ -1,6 +1,4 @@
 ﻿#include "w_text.h"
-#include <stdlib.h>
-#include <string.h>
 
 static w_text_t * __init( window_t *);
 static int __show();
@@ -23,7 +21,7 @@ w_text_t * window_create_text(window_t *parent)
 
 static w_text_t * __init(window_t *window)
 {
-   w_text_t * text = (w_text_t *)malloc(sizeof(w_text_t));
+    w_text_t * text = (w_text_t *)malloc(sizeof(w_text_t));
     text->window = window;
     text->window->this_window = &text;
     /*
@@ -35,6 +33,7 @@ static w_text_t * __init(window_t *window)
     */
     return text;
 }
+
 
 static int __select(char key)
 {
@@ -49,10 +48,20 @@ static int __hide()
 
 int     window_show_text(w_text_t*text)
 {
-        system("color 30");         //以后可以用不同的颜色去表示
-        gotoXY(text->window->__x,text->window->__y);
-        printf("%s",text->data.text);
-        return 0;
+    system("color 30");         //以后可以用不同的颜色去表示
+    gotoXY(text->window->__x,text->window->__y);
+    printf("%s",text->data.text);
+    return 0;
+}
+
+int     window_hide_text(w_text_t*text)
+{
+    system("color 30");
+    gotoXY(text->window->__x,text->window->__y);
+    //需要优化
+    int i ;
+    for(i = 0 ;i< text->data.len;i++)   printf(" ");
+    return 0;
 }
 
 static int __msg(char msg)
@@ -75,3 +84,4 @@ int    window_set_text(w_text_t*text, const char *src_text)
 
     return 0;
 }
+

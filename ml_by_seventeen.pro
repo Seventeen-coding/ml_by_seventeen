@@ -54,7 +54,13 @@ SOURCES += src/mielong2014050302.c \
     window/basic/select_list.c \
     window/basic/w_text.c \
     story/game_story_init.c \
-    game/game_env.c
+    game/game_env.c \
+    map/file/file_map.c \
+    map/template_map.c \
+    window/file/file_main_window.c \
+    window/file/file_save_window.c \
+    window/file/file_load_window.c \
+    window/template_window.c
 
 
 include(deployment.pri)
@@ -132,4 +138,10 @@ HEADERS += \
     window/basic/select_list.h \
     window/basic/w_list.h \
     window/basic/w_text.h \
-    game/game_env.h
+    game/game_env.h \
+    map/file/file_map.h \
+    window/file/file_main_window.h \
+    window/file/file_load_window.h \
+    window/file/file_save_window.h \
+    window/template_window.h \
+    map/template_map.h

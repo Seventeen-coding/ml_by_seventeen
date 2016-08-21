@@ -4,6 +4,7 @@
 #include "game/game_node.h"
 #include "map/welcome/welcome_map.h"
 #include "map/welcome/welcome_movie_map.h"
+#include "map/file/file_map.h"
 
 typedef enum {
     RET_WELCOME_ERROR = -1,
@@ -13,6 +14,7 @@ typedef enum {
 typedef struct{
     game_map_t *welcome_map;
     game_map_t *welcome_movie_map;
+   game_map_t *file_map;
 }welcome_map_list_t;
 
 

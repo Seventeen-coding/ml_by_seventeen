@@ -2,11 +2,15 @@
 #include "welcome_map.h"
 #include "game/game_goble.h"
 #include "game/game_debug.h"
+//#include "window/welcome/welcome_window.h"
 #include "window/basic/w_text.h"
+
+#include "node/welcome/welcome_node.h"
 
 struct{
     game_map_t *map;
     //window
+    //w_welcome_t window
     w_text_t*   top;
     w_text_t*   title;
     w_text_t*   menu1;
@@ -77,13 +81,14 @@ int welcome_map_show(void)
 int welcome_map_select(char key)
 {
     GAME_BASE_DEBUG("welcome_select : %c\r\n",key);
+    welcome_map_list_t * list = welcome_map_list_get();
     switch(key)
     {
     case 'a'|'A':
-       // Set_current_map(New_game);
-        return GAME_MAP_FINISH;
+        //Set_current_node(New_game);
+        return GAME_NODE_FINISH;
     case 'b'|'B':
-        Save_Load_map();     //save load
+        game_map_set(list->file_map);
         return GAME_MAP_FINISH;
     case 'c'|'C':
         Show_main_menu_end();

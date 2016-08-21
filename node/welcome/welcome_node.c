@@ -42,10 +42,12 @@ int welcome_node_init()
     /*get map*/
     welcome_node.list.welcome_map  = welcome_map_get();
     welcome_node.list.welcome_movie_map  = welcome_movie_map_get();
+    welcome_node.list.file_map = file_map_get();
 
     /*add list  感觉可有可无 需要优化*/
     welcome_node.node->map_head = (game_map_list_node_t*) list_create(welcome_node.list.welcome_map);
     list_insert_after(welcome_node.node->map_head , welcome_node.list.welcome_movie_map);
+    list_insert_after(welcome_node.node->map_head , welcome_node.list.file_map);
 
     return RET_WELCOME_OK;
 }
