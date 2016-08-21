@@ -11,7 +11,7 @@ void gsdy(char gst[],int len);
 void errdy(char etext[],char e_title[],char e_class[],int clsup);
 
 
-
+void HideTheCursor();
 void gotoXY(int x, int y);
 
 

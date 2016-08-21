@@ -10,8 +10,14 @@ typedef enum {
     RET_WELCOME_OK
 }welcome_ret_t;
 
+typedef struct{
+    game_map_t *welcome_map;
+    game_map_t *welcome_movie_map;
+}welcome_map_list_t;
+
+
 game_node_t *welcome_node_get();
 int welcome_node_init();
-
+welcome_map_list_t * welcome_map_list_get();
 #endif // WELCOME_NODE_H
 

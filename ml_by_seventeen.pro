@@ -53,7 +53,8 @@ SOURCES += src/mielong2014050302.c \
     game/game_window_type.c \
     window/basic/select_list.c \
     window/basic/w_text.c \
-    story/game_story_init.c
+    story/game_story_init.c \
+    game/game_env.c
 
 
 include(deployment.pri)
@@ -130,4 +131,5 @@ HEADERS += \
     game/game_window_type.h \
     window/basic/select_list.h \
     window/basic/w_list.h \
-    window/basic/w_text.h
+    window/basic/w_text.h \
+    game/game_env.h

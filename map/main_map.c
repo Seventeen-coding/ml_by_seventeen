@@ -23,7 +23,7 @@ int Enter_main_select()
 
 void Main_map()
 {
-    Show_main_window();
+    //   Show_main_window();
     //如果用while在这里判定选择 就不会刷图这么难看了
     Enter_main_select();
 }

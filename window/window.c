@@ -8,6 +8,20 @@ void gotoXY(int x, int y)
    //Set the position
    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
+//Hides the console cursor
+void HideTheCursor()
+{
+   CONSOLE_CURSOR_INFO cciCursor;
+   HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+   if(GetConsoleCursorInfo(hStdOut, &cciCursor))
+   {
+      cciCursor.bVisible = FALSE;
+      SetConsoleCursorInfo(hStdOut, &cciCursor);
+   }
+}
+
+///////////////////////////////////////////////////////
 
 
 void btdy(char btfh[],char bttitle[])//标题打印函数
@@ -236,18 +250,7 @@ void ConPrintAt(int x, int y, char *CharBuffer, int len)
    WriteConsole(hStdOut, CharBuffer, len, &count, NULL);
 }
 
-//Hides the console cursor
-void HideTheCursor()
-{
-   CONSOLE_CURSOR_INFO cciCursor;
-   HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
 
-   if(GetConsoleCursorInfo(hStdOut, &cciCursor))
-   {
-      cciCursor.bVisible = FALSE;
-      SetConsoleCursorInfo(hStdOut, &cciCursor);
-   }
-}
 
 //Shows the console cursor
 void ShowTheCursor()
