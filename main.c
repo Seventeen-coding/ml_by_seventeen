@@ -2,11 +2,13 @@
 /*重构版 2016/8/17    By Seventeen                       */
 
 #include "main.h"
+#include "window/include/window.h"
+
 
 int main (int argc, char *argv[])
 {
-    //init_game_env();/*这里运行的是游戏外部无关的设置 如窗口大小 光标 字体颜色等 思维: 以“游戏” 为思想去设计这个接口 */
 
+    //init_game_env();/*这里运行的是游戏外部无关的设置 如窗口大小 光标 字体颜色等 思维: 以“游戏” 为思想去设计这个接口 */
     do{
         game_start();
         // return 0;         //coding  start
@@ -20,7 +22,6 @@ int main (int argc, char *argv[])
         /*
         ret = welcome_get_node(&node);
         if(ret != RET_WELCOME_OK)   break;   //error
-
     */
         game_end();
     }while(0);//game_status_get() != GAME_EXIT );

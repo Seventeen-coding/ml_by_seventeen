@@ -11,5 +11,10 @@ void gsdy(char gst[],int len);
 void errdy(char etext[],char e_title[],char e_class[],int clsup);
 
 
+
+void cursor_goto(int x,int y);
+
+
+
 #endif // WINDOW_H
 

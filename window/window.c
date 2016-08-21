@@ -1,5 +1,22 @@
-#include "window/include/window.h"
-void btdy(char btfh[],char bttitle[])//±êÌâ´òÓ¡º¯Êı
+ï»¿#include "window/include/window.h"
+
+HANDLE hout;
+//ç§»åŠ¨å…‰æ ‡åˆ°æŒ‡å®šä½ç½®
+void cursor_goto(int x,int y)
+{
+    hout=GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD coord; //å±å¹•ä¸Šçš„åæ ‡
+    CONSOLE_SCREEN_BUFFER_INFO csbi; //æ§åˆ¶å°å±å¹•ç¼“å†²åŒºä¿¡æ¯
+    GetConsoleScreenBufferInfo(hout,&csbi);
+    coord.X=csbi.dwCursorPosition.X; //å¾—åˆ°åæ ‡Xçš„å€¼
+    coord.Y=csbi.dwCursorPosition.Y; //å¾—åˆ°åæ ‡Yçš„å€¼
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(hout,coord);
+
+}
+
+void btdy(char btfh[],char bttitle[])//æ ‡é¢˜æ‰“å°å‡½æ•°
 {
     system("cls");
     int pn;
@@ -15,7 +32,7 @@ void btdy(char btfh[],char bttitle[])//±êÌâ´òÓ¡º¯Êı
 
 
 
-void ttdy(char main_t[],char m_title[],int clspa,int clspb,int timep,int ptime)//¶¯Ì¬´òÓ¡º¯Êı£¬Í¨ÓÃ£¡ ´òÓ¡Ö÷Ìå¡¢±êÌâ¡¢ÇåÆÁÈ·ÈÏ£¨clspa=1ÏÔÊ¾Ç°ÇåÆÁ£¬clspb=1ÏÔÊ¾ºóÇåÆÁ,²¥·ÅËÙ¶È£¬²¥ÍêÔİÍ£Ê±¼ä
+void ttdy(char main_t[],char m_title[],int clspa,int clspb,int timep,int ptime)//åŠ¨æ€æ‰“å°å‡½æ•°ï¼Œé€šç”¨ï¼ æ‰“å°ä¸»ä½“ã€æ ‡é¢˜ã€æ¸…å±ç¡®è®¤ï¼ˆclspa=1æ˜¾ç¤ºå‰æ¸…å±ï¼Œclspb=1æ˜¾ç¤ºåæ¸…å±,æ’­æ”¾é€Ÿåº¦ï¼Œæ’­å®Œæš‚åœæ—¶é—´
 {
     if(clspa==1)
     {system("cls");}
@@ -35,7 +52,7 @@ void ttdy(char main_t[],char m_title[],int clspa,int clspb,int timep,int ptime)/
     Sleep(ptime);
 }
 
-void sttdy(char stt[],int timep,int ptime)//µ¥Ò»´òÓ¡º¯Êı
+void sttdy(char stt[],int timep,int ptime)//å•ä¸€æ‰“å°å‡½æ•°
 {
     int pn,len;
     len=strlen(stt);
@@ -50,7 +67,7 @@ void sttdy(char stt[],int timep,int ptime)//µ¥Ò»´òÓ¡º¯Êı
     Sleep(ptime);
 }
 
-void skdy(char skt[])//¼¼ÄÜËµÃ÷ÎŞËğ´òÓ¡
+void skdy(char skt[])//æŠ€èƒ½è¯´æ˜æ— æŸæ‰“å°
 {
     int pn,len;
     len=strlen(skt);
@@ -62,7 +79,7 @@ void skdy(char skt[])//¼¼ÄÜËµÃ÷ÎŞËğ´òÓ¡
 
 }
 
-void gsdy(char gst[],int len)//´òÓ¡¼ä¸ôÌõ
+void gsdy(char gst[],int len)//æ‰“å°é—´éš”æ¡
 {
     int pn;
     printf("\n");
@@ -71,7 +88,7 @@ void gsdy(char gst[],int len)//´òÓ¡¼ä¸ôÌõ
 }
 
 
-void errdy(char etext[],char e_title[],char e_class[],int clsup)//´íÎó·´À¡
+void errdy(char etext[],char e_title[],char e_class[],int clsup)//é”™è¯¯åé¦ˆ
 {
     int pn=0,len;
     system("color c0");
@@ -83,8 +100,8 @@ void errdy(char etext[],char e_title[],char e_class[],int clsup)//´íÎó·´À¡
     printf("%s\n",e_title);
     for(pn=0;pn<50;pn++)
         printf("*");
-    printf("\n\n¡¾´íÎóµÈ¼¶¡¿£º%s\n\n",e_class);
-    printf("¡¾´íÎóÔ­Òò¡¿£º\n ");
+    printf("\n\nã€é”™è¯¯ç­‰çº§ã€‘ï¼š%s\n\n",e_class);
+    printf("ã€é”™è¯¯åŸå› ã€‘ï¼š\n ");
     len=strlen(etext);
     for(pn=0;pn<=len;pn++)
     {

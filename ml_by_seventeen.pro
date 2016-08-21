@@ -48,7 +48,10 @@ SOURCES += src/mielong2014050302.c \
     story/welcome/welcome_story.c \
     map/welcome/welcome_map.c \
     map/welcome/welcome_movie_map.c \
-    node/welcome/welcome_node.c
+    node/welcome/welcome_node.c \
+    game/game_window.c \
+    window/basic/text.c \
+    game/game_window_type.c
 
 
 include(deployment.pri)
@@ -119,4 +122,8 @@ HEADERS += \
     game/game_list.h \
     node/welcome/welcome_node.h \
     map/welcome/welcome_map.h \
-    map/welcome/welcome_movie_map.h
+    map/welcome/welcome_movie_map.h \
+    game/game_window.h \
+    window/welcome/welcome_window.h \
+    window/basic/text.h \
+    game/game_window_type.h

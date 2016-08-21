@@ -4,6 +4,9 @@
 
 
 #include "game/game_story.h"
+#include "game/game_node.h"
+#include "game/game_map.h"
+#include "game/game_window.h"
 
 typedef enum {
     GAME_EXIT = -1,// -1
@@ -39,10 +42,13 @@ typedef enum {
 
 struct {
     game_status_t game_current_status;
+    window_t *game_current_window ; //focus
+    game_story_list_node_t  *game_story_list;
+
+    /*以下部分只是为了方便调用*/
     game_map_t    *game_current_map;
     game_node_t  *game_current_node;
     game_story_t  *game_current_story;
-    game_story_list_node_t  *game_story_list;
 }gobel_game_config;
 
 
