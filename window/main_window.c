@@ -29,6 +29,7 @@ void Show_main_window()
 
 void Show_main_dh()
 {
+    system("cls");//清屏
     int pn;
     system("color 31");
     for(pn=0;pn<60;pn++)
@@ -41,8 +42,8 @@ void Show_main_dh()
     printf("\n\n\n");
     for(pn=0;pn<60;pn++)
         printf("*");
-    Sleep(1000);
-    system("cls");//清屏
+    //Sleep(1000);
+
 }
 
 void Show_main_menu_end()
@@ -51,7 +52,7 @@ void Show_main_menu_end()
     //sure=MessageBox(NULL,"你确认要退出游戏？","退出确认",MB_YESNO);
     sure=MessageBox(NULL,"你确认要退出游戏？","退出确认",MB_YESNO);
     if(sure==IDYES)
-    exit(1);
+        exit(1);
 }
 
 void Show_main_god_here()

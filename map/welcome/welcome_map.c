@@ -2,7 +2,7 @@
 #include "welcome_map.h"
 #include "game/game_goble.h"
 #include "game/game_debug.h"
-#include "window/basic/text.h"
+#include "window/basic/w_text.h"
 
 struct{
     game_map_t *map;

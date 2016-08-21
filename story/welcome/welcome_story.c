@@ -10,7 +10,6 @@ int  welcome_story_init()
     if(node == NULL)   return RET_WELCOME_ERROR;
     /*有故事就开始创建表*/
     welcome_story = (game_story_t *)malloc(sizeof(game_story_t));
-    welcome_story->game_current_node = node;        /*set fitst node to current*/
     welcome_story->node_head =  (game_story_list_node_t *)list_create(( game_node_t *)node);
 
     return  RET_WELCOME_OK;

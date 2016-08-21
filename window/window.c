@@ -46,10 +46,11 @@ void ttdy(char main_t[],char m_title[],int clspa,int clspb,int timep,int ptime)/
         if(pn%40==0)
             printf("\n\n");
         printf("%c",main_t[pn]);
-        Sleep(timep);}
+        //Sleep(timep);
+    }
     if(clspb==1)
     {system("cls");}
-    Sleep(ptime);
+    //Sleep(ptime);
 }
 
 void sttdy(char stt[],int timep,int ptime)//单一打印函数
@@ -61,10 +62,10 @@ void sttdy(char stt[],int timep,int ptime)//单一打印函数
         if(pn%40==0)
             printf(" ");
         printf("%c",stt[pn]);
-        Sleep(timep);
+        //Sleep(timep);
 
     }
-    Sleep(ptime);
+    //Sleep(ptime);
 }
 
 void skdy(char skt[])//技能说明无损打印

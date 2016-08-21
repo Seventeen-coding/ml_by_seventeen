@@ -6,8 +6,6 @@ game_map_t *map ;
 int welcome_movie_map_handle(void);
 int welcome_movie_map_show(void);
 int welcome_movie_map_select(char key);
-int welcome_movie_map_init();
-
 
 game_map_t * welcome_movie_map_get()
 {
@@ -41,6 +39,8 @@ int welcome_movie_map_show(void)
 int welcome_movie_map_select(char key)
 {
     GAME_BASE_DEBUG("welcome_movie_select : %c\r\n",key);
-    if(key == '1')  return GAME_MAP_FINISH;
-    return GAME_MAP_FINISH;
+    if(key == '1')      {
+        return GAME_MAP_FINISH;
+    }
+    return GAME_RUNNING;
 }

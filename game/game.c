@@ -1,7 +1,8 @@
 ﻿
 #include "game/game.h"
-
-
+#include "story/game_story_init.h"
+#include "node/game_node_init.h"
+#include "map/game_map_init.h"
 /*
  *  主要工作是配置游戏的数据
  *   仅仅只是初始化 生成某些数据
@@ -9,7 +10,6 @@
  */
 int game_init()
 {
-
     GAME_BASE_DEBUG("game_init\n\r");
     int status;
     do{
@@ -20,13 +20,10 @@ int game_init()
          *  卡顿 而且节省内存空间
          */
         //do something init
-        /*现在的游戏不需要游戏前进行 map init*/
-        //game_map_init();            //这些配置不应该在game_map.h上  应写map文件夹上
-        //game_node_init();           //因为这些是对象生成 如果放在game需要用一个配置链接需要
-        // game_story_init();           //初始化的对象
-        // game_story_list_init();
-        //  game_set_map( game_welcome);
-        //gobel_game_config.game_map_p = &gobel_game_config.game_current_node.game_current_map;
+        /*初始化游戏入口 welcome*/
+        if((status = game_map_init()) != GAME_MAP_INIT_OK)            break;
+        if((status = game_node_init()) != GAME_NODE_INIT_OK)       break;
+        if((status = game_story_init()) != GAME_STORY_INIT_OK)     break;    //初始化的对象
         status = GAME_INIT_FINISH;
     }while(0);
     GAME_BASE_DEBUG("game_init : %d \n\r",status);
@@ -43,12 +40,10 @@ int game_config()
     int status;
     do{
         //do something config
-        /*可以用一个函数set*/
-        gobel_game_config.game_story_list = game_story_list_get();
-        gobel_game_config.game_current_story = (game_story_t  *)gobel_game_config.game_story_list->data;
-        gobel_game_config.game_current_node = gobel_game_config.game_current_story->game_current_node;
-        gobel_game_config.game_current_map = gobel_game_config.game_current_node->game_current_map;
-        //
+        /*游戏针对的是story 不关心 node和ｍap */
+        game_story_set(welcome_story_get());
+        game_node_set(welcome_node_get());
+        game_map_set(welcome_movie_map_get());
         status = GAME_CONFIG_FINISH;
     }while(0);
     GAME_BASE_DEBUG("game_config : %d \n\r",status);
@@ -91,13 +86,28 @@ int game_start()
 
 int game_stop()
 {
-
 }
 
 int game_end()
 {
-
     game_stop();
+}
+
+int game_story_set(game_story_t *story)
+{
+    gobel_game_config.game_current_story = story;
+}
+
+int game_node_set(game_node_t *node)
+{
+    gobel_game_config.game_current_story->game_current_node = node;
+    gobel_game_config.game_current_node = node;
+}
+
+int game_map_set(game_map_t *map)
+{
+    gobel_game_config.game_current_story->game_current_node->game_current_map = map;
+    gobel_game_config.game_current_map = map;
 }
 
 int game_status_set(int status)
@@ -110,12 +120,6 @@ int game_status_set(int status)
 int game_status_get()
 {
     return gobel_game_config.game_current_status;
-}
-
-int game_sotry_run(game_story_t story)
-{
-    //   if(check_up_arg(map))
-    //map.map_handle();
 }
 
 

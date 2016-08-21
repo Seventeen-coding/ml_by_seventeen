@@ -16,7 +16,7 @@ game_story_list_node_t *game_setup_config_story()
     }
     return game_story_list;
 }
-
+#if 0
 int game_story_init(game_story_list_node_t *list)
 {
     if(list == NULL)    list = (game_story_list_node_t *)malloc(sizeof(game_story_list_node_t));
@@ -26,7 +26,7 @@ int game_story_init(game_story_list_node_t *list)
     game_setup_config_story(list);
     return    0;
 }
-
+#endif
 
 int  game_remove_story( game_story_t  * stoty)
 {
@@ -63,8 +63,8 @@ int game_story_run(game_story_t *story)
     while(status != GAME_OVER &&  status != GAME_STORY_FINISH)
     {
         status = game_node_run(story->game_current_node);
-        if(status == GAME_OVER) break;
-        status = game_story_node_has_next(story) ;
+        // if(status == GAME_OVER) break;
+        //status = game_story_node_has_next(story) ;
         game_status_set(status);
     }
     //game_story_end(story);

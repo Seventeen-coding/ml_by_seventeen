@@ -11,6 +11,7 @@ typedef enum {
 }welcome_ret_t;
 
 game_node_t *welcome_node_get();
+int welcome_node_init();
 
 #endif // WELCOME_NODE_H
 

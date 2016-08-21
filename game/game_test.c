@@ -12,6 +12,6 @@ void game_test_base()
 {
      game_init();                    //----
      game_config();             //----
-     game_run();                 //----
+  //   game_run();                 //----
 
 }

@@ -30,7 +30,6 @@ typedef enum {
     GAME_STORY_FINISH,//16
     GAME_STORY_LIST_FINISH,//17
     GAME_FINISH,//18
-
     GAME_TEST
 }game_status_t;
 
@@ -53,21 +52,23 @@ struct {
 
 
 int game_init();
-
 int game_config();
-
 int game_run();
-
 int game_start();
-
 int game_stop();
-
 int game_end();
 
 int  game_goble_get();
 
+//status
 int game_status_get();
-
 int game_status_set();
+
+//story node map set
+int game_story_set(game_story_t *story);
+int game_node_set(game_node_t *node);
+int game_map_set(game_map_t *map);
+
+
 #endif // GAME_GOBLE_H
 

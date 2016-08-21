@@ -9,8 +9,8 @@ int game_node_run(game_node_t *node)
     while(status  != GAME_NODE_FINISH && status != GAME_OVER)
     {
         status =  game_map_run(node->game_current_map);
-       if(status == GAME_OVER) break;
-        status = game_node_map_has_next(node) ;
+       //if(status == GAME_OVER) break;
+        //status = game_node_map_has_next(node) ;
         game_status_set(status);
     }
     game_node_end(node);

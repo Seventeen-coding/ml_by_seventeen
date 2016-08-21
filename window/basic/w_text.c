@@ -1,4 +1,4 @@
-﻿#include "text.h"
+﻿#include "w_text.h"
 #include <stdlib.h>
 #include <string.h>
 
