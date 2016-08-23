@@ -8,6 +8,6 @@ typedef enum {
 }window_type_t;
 //    WINDOW_UNKNOW,
 
-window_t * __get_window__();
+window_t * __get_window__();//int __x, int __y, int __w, int __h);
 
 #endif //GAME_WINDOW_TPYE_H

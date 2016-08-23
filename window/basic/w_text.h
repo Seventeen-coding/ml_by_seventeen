@@ -16,8 +16,6 @@ typedef struct {
     char *text;
     int  index;
     int  len;
-    int __x;
-    int __y;
 }w_text_data_t;
 
 typedef struct {
@@ -32,7 +30,7 @@ typedef struct{
 
 }w_text_t;
 
-w_text_t *window_create_text(window_t *parent);
+w_text_t *window_create_text(window_t *parent, int x, int y, int w, int h);
 int     window_set_text(w_text_t*text,const char *src_text);
 int     window_show_text(w_text_t*text);
 int     window_hide_text(w_text_t*text);

@@ -37,7 +37,7 @@ int file_map_init()
     file_map.map->_select = file_map_select;
     file_map.map->_show = file_map_show;
 
-    file_map.file_main_window = window_create_file_main(NULL);
+    file_map.file_main_window = window_create_file_main(NULL,0,0,40,40);
 
 }
 int file_map_show(void)
@@ -49,7 +49,7 @@ int file_map_show(void)
 
 int file_map_select(char key)
 {
-
+    return GAME_MAP_FINISH;
     return GAME_RUNNING;
 }
 

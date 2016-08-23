@@ -9,7 +9,9 @@
 #include "game/game_window.h"
 
 typedef enum {
-    GAME_EXIT = -1,// -1
+
+    GAME_EXIT = -2,// -2
+    GAME_ERROR = -1,//-1
     GAME_OVER = 0,// 0
     GAME_START,   //1
     GAME_STOP,//  2

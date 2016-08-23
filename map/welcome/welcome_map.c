@@ -2,21 +2,15 @@
 #include "welcome_map.h"
 #include "game/game_goble.h"
 #include "game/game_debug.h"
-//#include "window/welcome/welcome_window.h"
-#include "window/basic/w_text.h"
+#include "window/welcome/welcome_window.h"
+
 
 #include "node/welcome/welcome_node.h"
 
 struct{
     game_map_t *map;
     //window
-    //w_welcome_t window
-    w_text_t*   top;
-    w_text_t*   title;
-    w_text_t*   menu1;
-    w_text_t*   menu2;
-    w_text_t*   menu3;
-    w_text_t*   bottom;
+    w_welcome_t *window;
 }welcome_map;
 
 int welcome_map_handle(void);
@@ -41,25 +35,8 @@ int welcome_map_init()
     welcome_map.map->_show = welcome_map_show;
     welcome_map.map->_select = welcome_map_select;
 
-    welcome_map.title = window_create_text(NULL);
-    welcome_map.top = window_create_text(NULL);
-    welcome_map.menu1 = window_create_text(NULL);
-    welcome_map.menu2 = window_create_text(NULL);
-    welcome_map.menu3 = window_create_text(NULL);
+    welcome_map.window = window_create_welcome(NULL,0,0,40,40);
 
-    window_set_text(welcome_map.top,"*************************************************");
-    window_set_position(welcome_map.top->window,0,0);
-    window_set_text(welcome_map.title,"    【灭龙传说】\n");
-    window_set_position(welcome_map.title->window,7,3);
-    window_set_text(welcome_map.menu1,"[A]--新的征程\n");
-    window_set_position(welcome_map.menu1->window,7,5);
-    window_set_text(welcome_map.menu2,"[B]--旧的回忆\n");
-    window_set_position(welcome_map.menu2->window,7,6);
-    window_set_text(welcome_map.menu3,"[C]--隐居山林\n");
-    window_set_position(welcome_map.menu3->window,7,7);
-    welcome_map.bottom = window_create_text(NULL);
-    window_set_text(welcome_map.bottom,"*************************************************");
-    window_set_position(welcome_map.bottom->window,0,10);
     return 0;   //INIT_OK
 }
 //int welcome_handle(void)
@@ -70,12 +47,8 @@ int welcome_map_show(void)
 {
     GAME_BASE_DEBUG("welcome_show\r\n");
     system("cls");//清屏
-    window_show_text(welcome_map.top);
-    window_show_text(welcome_map.title);
-    window_show_text(welcome_map.menu1);
-    window_show_text(welcome_map.menu2);
-    window_show_text(welcome_map.menu3);
-    window_show_text(welcome_map.bottom);
+    window_show_welcome(welcome_map.window);
+    return 0;
 }
 
 int welcome_map_select(char key)
@@ -88,7 +61,7 @@ int welcome_map_select(char key)
         //Set_current_node(New_game);
         return GAME_NODE_FINISH;
     case 'b'|'B':
-        game_map_set(list->file_map);
+        game_map_set(list->file_map);   //关闭窗口后需要返回 game_callback_map_set
         return GAME_MAP_FINISH;
     case 'c'|'C':
         Show_main_menu_end();

@@ -10,18 +10,19 @@ struct{
     __window_tpye_list_t  window_type_list;
 }__window_core__;
 
-window_t * __create_window(window_t *parent)
+window_t * __create_window(window_t *parent,int x, int y,int w,int h)
 {
-    window_t * window = __get_window__();
-    __w_init__(parent,window);     //这里想像的是通用的初始化
+    window_t * window = __get_window__();//0, 0, 0, 0);
+    __w_init__(parent,window,x,y,w,h);     //这里想像的是通用的初始化
     return  window;
 }
 
-int  __w_init__(window_t *parent, window_t * window )
+int  __w_init__(window_t *parent, window_t * window ,int x, int y,int w,int h)
 {
     window->parent = parent;
     /*如果是画图就需要用plant*/
-    window_set_position(window,0,0);
+    window_set_position(window,x,y);
+    window_set_area(window,w,h);
 }
 
 /*destory 的话 没什么好做的 因为我们初始化的东西就不想把他们删除
@@ -33,10 +34,15 @@ int    __w_destory__(void)
 
 }
 
-int window_set_position(window_t * window ,int x,int y)
+int window_set_position(window_t * window , int x, int y)
 {
     window->__x = x;
     window->__y = y;
     return 0;
 }
-
+int window_set_area(window_t * window,int w,int h)
+{
+    window->__w = w;
+    window->__h= h;
+    return 0;
+}

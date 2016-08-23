@@ -1,5 +1,5 @@
-#ifndef FILE_MAIN_WINDOW_H
-#define FILE_MAIN_WINDOW_H
+#ifndef TEMPLATE_WINDOW_H
+#define TEMPLATE_WINDOW_H
 
 #include "game/game_window.h"
 
@@ -8,7 +8,7 @@
 typedef struct {
     int __x;
     int __y;
-}w_file_main_data_t;
+}w_template_data_t;
 
 typedef struct{
     //window
@@ -20,12 +20,14 @@ typedef struct{
     w_text_t *menu3;
     w_text_t *bottom;
     //data
-    w_file_main_data_t   data;
-}w_file_main_t;
+    w_template_data_t   data;
+}w_template_t;
 
-w_file_main_t *window_create_file_main(window_t *parent, int x, int y, int w, int h);
-int     window_show_file_main(w_file_main_t*window);
+w_template_t *window_create_template(window_t *parent);
+int     window_show_template(w_template_t*window);
 
 
-#endif // FILE_MAIN_WINDOW_H
+
+
+#endif // TEMPLATE_H
 

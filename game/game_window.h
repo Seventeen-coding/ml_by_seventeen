@@ -49,12 +49,15 @@ typedef struct window_t{
    // char * type;
     int         __x;
     int         __y;
+    int         __w;
+    int         __h;
     //void         *data;     /*根据不同的window存不同的data*/
 }window_t;
 
-window_t * __create_window(window_t *parent);
+window_t * __create_window(window_t *parent, int x, int y, int w, int h);
 int game_focus_window(window_t *window);
-int window_set_position(window_t * window ,int x,int y);
+int window_set_position(window_t * window , int x, int y);
+int window_set_area(window_t * window,int w,int h);
 
 #endif // GAME_WINDOW_H
 

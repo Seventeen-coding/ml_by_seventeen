@@ -1,4 +1,7 @@
 #include "welcome_movie_map.h"
+
+#include "window/welcome/welcome_movie_window.h"
+
 #include "game/game_goble.h"
 #include "game/game_debug.h"
 
@@ -9,10 +12,7 @@
 struct{
     game_map_t *map;
     //window
-    w_text_t*   top;
-    w_text_t*   title;
-    w_text_t*   text;
-    w_text_t*   bottom;
+   w_welcome_movie_t *window;
 }welcome_movie_map;
 
 int welcome_movie_map_handle(void);
@@ -36,19 +36,8 @@ int welcome_movie_map_init()
     welcome_movie_map.map->_show = welcome_movie_map_show;
     welcome_movie_map.map->_select = welcome_movie_map_select;
 
-    welcome_movie_map.title = window_create_text(NULL);
-    welcome_movie_map.top = window_create_text(NULL);
-    welcome_movie_map.text = window_create_text(NULL);
-    welcome_movie_map.bottom = window_create_text(NULL);
+    welcome_movie_map.window = window_create_welcome_movie(NULL,0,0,40,40);
 
-    window_set_text(welcome_movie_map.top,"*************************************************");
-    window_set_position(welcome_movie_map.top->window,0,0);
-    window_set_text(welcome_movie_map.title," 欢迎进入【灭龙传说】\n");
-    window_set_position(welcome_movie_map.title->window,10,3);
-    window_set_text(welcome_movie_map.text,"作者：seventeen 2016/8/22\n");
-    window_set_position(welcome_movie_map.text->window,10,5);
-    window_set_text(welcome_movie_map.bottom,"*************************************************");
-    window_set_position(welcome_movie_map.bottom->window,0,10);
     return 0;   //INIT_OK
 }
 //int welcome_handle(void)
@@ -61,10 +50,7 @@ int welcome_movie_map_show(void)
     GAME_BASE_DEBUG("welcome_movie_show\r\n");
     system("cls");//清屏
     system("color 31");
-    window_show_text(welcome_movie_map.top);
-    window_show_text(welcome_movie_map.title);
-    window_show_text(welcome_movie_map.text);
-    window_show_text(welcome_movie_map.bottom);
+    window_show_welcome_movie(welcome_movie_map.window);
 }
 
 int welcome_movie_map_select(char key)
