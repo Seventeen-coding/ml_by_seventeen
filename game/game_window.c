@@ -10,6 +10,7 @@ struct{
     __window_tpye_list_t  window_type_list;
 }__window_core__;
 
+//x y 展示没卵用
 window_t * __create_window(window_t *parent,int x, int y,int w,int h)
 {
     window_t * window = __get_window__();//0, 0, 0, 0);

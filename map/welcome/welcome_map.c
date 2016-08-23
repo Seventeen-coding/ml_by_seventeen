@@ -61,7 +61,7 @@ int welcome_map_select(char key)
     switch(key)
     {
     case 'a'|'A':
-        //Set_current_node(New_game);
+        //game_next_map_set(this_map,list->new_game_map);
         return GAME_NODE_FINISH;
     case 'b'|'B':
         game_next_map_set(this_map,list->file_map);   //关闭窗口后需要返回 game_callback_map_set
@@ -70,7 +70,7 @@ int welcome_map_select(char key)
         Show_main_menu_end();
         return GAME_MAP_FINISH;
     case 'w'|'W':
-        Show_main_god_here();
+       // Show_main_god_here();
         return GAME_MAP_FINISH;
     default:
         return GAME_RUNNING;
