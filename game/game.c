@@ -111,9 +111,11 @@ int game_map_set(game_map_t *map)
     gobel_game_config.game_current_map = map;
 }
 
-int game_next_map_set(game_map_t *map,game_map_t *callback_map)
+int game_next_map_set(game_map_t *map,game_map_t *next_map)
 {
     map->next_map = next_map;
+    game_callback_map_set(next_map,map);
+    return 0;
 }
 
 int game_callback_map_set(game_map_t *map,game_map_t *callback_map)

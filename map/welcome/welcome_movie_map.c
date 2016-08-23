@@ -15,6 +15,8 @@ struct{
    w_welcome_movie_t *window;
 }welcome_movie_map;
 
+static game_map_t *this_map = NULL;
+
 int welcome_movie_map_handle(void);
 int welcome_movie_map_show(void);
 int welcome_movie_map_select(char key);
@@ -38,6 +40,7 @@ int welcome_movie_map_init()
 
     welcome_movie_map.window = window_create_welcome_movie(NULL,0,0,40,40);
 
+    this_map = welcome_movie_map.map;
     return 0;   //INIT_OK
 }
 //int welcome_handle(void)
@@ -57,6 +60,6 @@ int welcome_movie_map_select(char key)
 {
     GAME_BASE_DEBUG("welcome_movie_select : %c\r\n",key);
     welcome_map_list_t * list = welcome_map_list_get();
-    game_map_set(list->welcome_map);    //在这里处理换图片不太好  如果要做好这里要牵连很多东西
+    game_next_map_set(this_map,list->welcome_map);
     return GAME_MAP_FINISH;
 }

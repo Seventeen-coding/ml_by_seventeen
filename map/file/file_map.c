@@ -15,6 +15,8 @@ struct{
     window_t *file_save_window;
 }file_map;
 
+static game_map_t *this_map;
+
 int file_map_handle(void);
 int file_map_show(void);
 int file_map_select(char key);
@@ -38,7 +40,7 @@ int file_map_init()
     file_map.map->_show = file_map_show;
 
     file_map.file_main_window = window_create_file_main(NULL,0,0,40,40);
-
+    this_map = file_map.map;
 }
 int file_map_show(void)
 {
@@ -49,6 +51,19 @@ int file_map_show(void)
 
 int file_map_select(char key)
 {
+    switch (getch()) {
+    case 's': case 'S':
+     //  Save_map();
+        break;
+    case 'r': case 'R':
+     //   Load_map();
+        break;
+    case 'q' :case 'Q':
+        game_next_map_set(this_map,this_map->callback_map);
+        break;
+    default:
+        break;
+    }
     return GAME_MAP_FINISH;
     return GAME_RUNNING;
 }

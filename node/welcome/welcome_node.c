@@ -24,11 +24,11 @@ game_node_t * welcome_node_get()
 welcome_map_list_t * welcome_map_list_get()
 {
     int ret;
-    if(welcome_node.node == NULL)
-    {
-        ret = welcome_node_init();
-        if(ret != RET_WELCOME_OK)   return NULL;
-    }
+    if(welcome_node.node != NULL)   &welcome_node.list;
+
+    ret = welcome_node_init();
+    if(ret != RET_WELCOME_OK)   return NULL;
+
     return &welcome_node.list;
 }
 

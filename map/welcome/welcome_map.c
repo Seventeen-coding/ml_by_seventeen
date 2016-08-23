@@ -13,6 +13,8 @@ struct{
     w_welcome_t *window;
 }welcome_map;
 
+static game_map_t *this_map = NULL;
+
 int welcome_map_handle(void);
 int welcome_map_show(void);
 int welcome_map_select(char key);
@@ -37,6 +39,7 @@ int welcome_map_init()
 
     welcome_map.window = window_create_welcome(NULL,0,0,40,40);
 
+    this_map = welcome_map.map;
     return 0;   //INIT_OK
 }
 //int welcome_handle(void)
@@ -61,7 +64,7 @@ int welcome_map_select(char key)
         //Set_current_node(New_game);
         return GAME_NODE_FINISH;
     case 'b'|'B':
-        game_map_set(list->file_map);   //关闭窗口后需要返回 game_callback_map_set
+        game_next_map_set(this_map,list->file_map);   //关闭窗口后需要返回 game_callback_map_set
         return GAME_MAP_FINISH;
     case 'c'|'C':
         Show_main_menu_end();
