@@ -2,62 +2,57 @@
 #define GAME_WINDOW_H
 
 #include "window/include/window.h"
+#include "game/game_list.h"
 
-typedef  int (*w_msg_handle)(char);
-typedef  int (* w_init_handle)(void);
-typedef  int (*w_show_handle)(void);
-typedef  int (*w_hide_handle)(void);
-typedef  int (*w_select_handle)(char );
-typedef  int (*w_destory_handle)( );
+
+
+typedef  int (*w_msg_handle)(void *_this,char arg);
+//typedef  int (* w_init_handle)(void *_this);
+typedef  int (*w_show_handle)(void *_this);
+typedef  int (*w_hide_handle)(void *_this);
+typedef  int (*w_select_handle)(void *_this,char arg);
+typedef  int (*w_destory_handle)(void *_this);
+typedef int (* w_set_position)(void *_this , int x, int y);
+typedef int (* w_set_area)(void *_this , int x, int y);
 
 
 typedef struct{
-    w_msg_handle      _msg;
-    w_show_handle   _show;
-    w_select_handle  _select;
-    w_hide_handle     _hide;
+    //w_init_handle       init;
+    w_msg_handle      msg;
+    w_show_handle   show;
+    w_select_handle  select;
+    w_hide_handle     hide;
+    w_destory_handle    destory;
+
+    w_set_position   set_pos;
+    w_set_area          set_area;
+
 }game_window_function_t;
 
-typedef struct{
-    w_init_handle       _init;
-    w_destory_handle    _destory;
-}game_window_base_t;
-
+typedef list_node window_list_node_t;
 
 typedef struct{
     struct game_window_t *parent;
+    struct game_window_t *__this;
+   window_list_node_t *children_list;
     char * type;
     int         __x;
     int         __y;
-    void         *data;     /*根据不同的window存不同的data*/
+    int         __w;
+    int          __h;
+
 }game_window_data_t;
 
 typedef struct window_t{
-    void *this_window;
-    //game_window_base_t  *base;
-    //w_init_handle       _init;
-    w_destory_handle    _destory;
-
-    // game_window_function_t  *function;
-    w_msg_handle     _msg;
-    w_show_handle   _show;
-    w_select_handle  _select;
-    w_hide_handle     _hide;
-
-    //game_window_data_t  data;
-    struct window_t *parent;
-   // char * type;
-    int         __x;
-    int         __y;
-    int         __w;
-    int         __h;
-    //void         *data;     /*根据不同的window存不同的data*/
+    game_window_function_t function;
+    game_window_data_t    data;
 }window_t;
 
-window_t * __create_window(window_t *parent, int x, int y, int w, int h);
+
+window_t * _w_create_window(window_t *parent, int x, int y, int w, int h);
+
 int game_focus_window(window_t *window);
-int window_set_position(window_t * window , int x, int y);
-int window_set_area(window_t * window,int w,int h);
+
 
 #endif // GAME_WINDOW_H
 

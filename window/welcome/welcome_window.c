@@ -34,30 +34,30 @@ w_welcome_t *window_create_welcome(window_t *parent,int x, int y , int w, int h)
 {
     window_t *window;
     w_welcome_t *welcome;
-    window = __create_window(parent,x,y,w,h);
+    window = _w_create_window(parent,x,y,w,h);
     welcome  = __init(window);
     return (w_welcome_t *)welcome;
 }
 
 int    window_show_welcome(w_welcome_t*window)
 {
-    window_show_text(window->top);
-    window_show_text(window->title);
-    window_show_text(window->menu1);
-    window_show_text(window->menu2);
-    window_show_text(window->menu3);
-    window_show_text(window->bottom);
+    window->top->function.w_function.show(window->top);
+    window->title->function.w_function.show(window->title);
+    window->menu1->function.w_function.show(window->menu1);
+    window->menu2->function.w_function.show(window->menu2);
+    window->menu3->function.w_function.show(window->menu3);
+    window->bottom->function.w_function.show(window->bottom);
     return 0;
 }
 
 int    window_hide_welcome(w_welcome_t*window)
 {
-    window_hide_text(window->top);
-    window_hide_text(window->title);
-    window_hide_text(window->menu1);
-    window_hide_text(window->menu2);
-    window_hide_text(window->menu3);
-    window_hide_text(window->bottom);
+    window->top->function.w_function.hide(window->top);
+    window->title->function.w_function.hide(window->title);
+    window->menu1->function.w_function.hide(window->menu1);
+    window->menu2->function.w_function.hide(window->menu2);
+    window->menu3->function.w_function.hide(window->menu3);
+    window->bottom->function.w_function.hide(window->bottom);
     return 0;
 }
 

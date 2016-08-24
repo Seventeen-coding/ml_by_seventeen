@@ -24,18 +24,17 @@ w_welcome_movie_t *window_create_welcome_movie(window_t *parent,int x,int y,int 
 {
     window_t *window;
     w_welcome_movie_t *welcome_movie;
-    window = __create_window(parent,x,y,w,h);
+    window = _w_create_window(parent,x,y,w,h);
     welcome_movie  = __init(window);
     return (w_welcome_movie_t *)welcome_movie;
 }
 
 int    window_show_welcome_movie(w_welcome_movie_t*window)
 {
-    window_show_text(window->top);
-    window_show_text(window->title);
-    window_show_text(window->text);
-    window_show_text(window->bottom);
-
+    window->top->function.w_function.show(window->top);
+    window->title->function.w_function.show(window->title);
+    window->text->function.w_function.show(window->text);
+    window->bottom->function.w_function.show(window->bottom);
     return 0;
 }
 

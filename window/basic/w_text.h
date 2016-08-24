@@ -19,19 +19,18 @@ typedef struct {
 }w_text_data_t;
 
 typedef struct {
+    game_window_function_t w_function;
     w_text_set_text set_text;
 }w_text_function_t;
 
 typedef struct{
     window_t *window;
+    //data
     w_text_data_t   data;
     //function
-   // w_text_set_text set_text;
-
+    w_text_function_t function;
 }w_text_t;
 
 w_text_t *window_create_text(window_t *parent, int x, int y, int w, int h);
-int     window_set_text(w_text_t*text,const char *src_text);
-int     window_show_text(w_text_t*text);
-int     window_hide_text(w_text_t*text);
+
 #endif //WINDOW_TEXT_H_
