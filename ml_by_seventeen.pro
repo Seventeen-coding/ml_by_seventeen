@@ -61,9 +61,9 @@ SOURCES += src/mielong2014050302.c \
     window/file/file_save_window.c \
     window/file/file_load_window.c \
     window/template_window.c \
-    window/information/storybook_1.c \
     window/welcome/welcome_window.c \
-    window/welcome/welcome_movie_window.c
+    window/welcome/welcome_movie_window.c \
+    window/information/storybook_1_window.c
 
 
 include(deployment.pri)
@@ -148,6 +148,6 @@ HEADERS += \
     window/file/file_save_window.h \
     window/template_window.h \
     map/template_map.h \
-    window/information/storybook_1.h \
     window/template.h \
-    window/welcome/welcome_movie_window.h
+    window/welcome/welcome_movie_window.h \
+    window/information/storybook_1_window.h

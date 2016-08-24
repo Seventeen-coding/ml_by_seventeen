@@ -15,6 +15,7 @@ typedef struct{
     game_map_t *welcome_map;
     game_map_t *welcome_movie_map;
     game_map_t *file_map;
+
 }welcome_map_list_t;
 
 

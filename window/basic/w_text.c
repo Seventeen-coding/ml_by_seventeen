@@ -51,9 +51,12 @@ static  int  __w_show( void *__this)
     int y = text->window->data.__y;
     //printline
     text->data.index = 0;
-    while(text->data.index != text->data.len)
+    while(text->data.index < text->window->data.__w * text->window->data.__h)
     {
-        if( (text->data.index % text->window->data.__w)  == 0)  gotoXY(x,y++);
+        if( (text->data.index % text->window->data.__w)  == 0)
+        {
+            gotoXY(x,y++);
+        }
         if(text->data.text[text->data.index]  != ' ')  printf("%c",text->data.text[text->data.index]);
         text->data.index++;
     }

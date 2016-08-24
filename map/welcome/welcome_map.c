@@ -51,6 +51,12 @@ int welcome_map_show(void)
     GAME_BASE_DEBUG("welcome_show\r\n");
     system("cls");//清屏
     window_show_welcome(welcome_map.window);
+    {
+         //test  以后一定要删除
+        #include"window/information/storybook_1_window.h"
+        w_storybook_1_t * window = window_create_storybook_1(NULL,0,0,10,10);
+        window_show_storybook_1(window);
+     }   //
     return 0;
 }
 
