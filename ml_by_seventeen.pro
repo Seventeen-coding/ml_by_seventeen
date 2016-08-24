@@ -63,7 +63,8 @@ SOURCES += src/mielong2014050302.c \
     window/template_window.c \
     window/welcome/welcome_window.c \
     window/welcome/welcome_movie_window.c \
-    window/information/storybook_1_window.c
+    window/information/storybook_1_window.c \
+    node/new_game/new_game_node.c
 
 
 include(deployment.pri)
@@ -150,4 +151,5 @@ HEADERS += \
     map/template_map.h \
     window/template.h \
     window/welcome/welcome_movie_window.h \
-    window/information/storybook_1_window.h
+    window/information/storybook_1_window.h \
+    node/new_game/new_game_node.h
