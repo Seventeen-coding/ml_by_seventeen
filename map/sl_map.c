@@ -18,7 +18,7 @@ void Enter_SL_select()
 }
 void Save_Load_map()
 {
-    Show_Save_Load_window();
+   // Show_Save_Load_window();
     Enter_SL_select();
 }
 

@@ -1,4 +1,4 @@
-﻿#ifndef WELCOME_MAP_H
+#ifndef WELCOME_MAP_H
 #define WELCOME_MAP_H
 
 #include "game/game_map.h"

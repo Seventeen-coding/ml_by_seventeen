@@ -1,28 +1,46 @@
-ï»¿#include "welcome_movie_map.h"
+#include "welcome_movie_map.h"
+
+#include "window/welcome/welcome_movie_window.h"
+
 #include "game/game_goble.h"
 #include "game/game_debug.h"
 
-game_map_t *map ;
+#include "window/basic/w_text.h"
+
+#include "node/welcome/welcome_node.h"
+
+struct{
+    game_map_t *map;
+    //window
+   w_welcome_movie_t *window;
+}welcome_movie_map;
+
+static game_map_t *this_map = NULL;
+
 int welcome_movie_map_handle(void);
 int welcome_movie_map_show(void);
 int welcome_movie_map_select(char key);
 
 game_map_t * welcome_movie_map_get()
 {
-    if(map > 0)         return map;
-    welcome_movie_map_init(map);
-    return map;
+    if(welcome_movie_map. map > 0)         return welcome_movie_map.map;
+    welcome_movie_map_init(welcome_movie_map.map );
+    return welcome_movie_map.map;
 }
 
 int welcome_movie_map_init()
 {
-    if(map > 0) {
-        return &map;
+    if(welcome_movie_map.map > 0) {
+        return -1;
     }
-    map  = (game_map_t * )malloc(sizeof(game_map_t));
-    map->_init = welcome_movie_map_init;
-    map->_show = welcome_movie_map_show;
-    map->_select = welcome_movie_map_select;
+    welcome_movie_map.map  = (game_map_t * )malloc(sizeof(game_map_t));
+    welcome_movie_map.map->_init = welcome_movie_map_init;
+    welcome_movie_map.map->_show = welcome_movie_map_show;
+    welcome_movie_map.map->_select = welcome_movie_map_select;
+
+    welcome_movie_map.window = window_create_welcome_movie(NULL,0,0,40,40);
+
+    this_map = welcome_movie_map.map;
     return 0;   //INIT_OK
 }
 //int welcome_handle(void)
@@ -33,14 +51,15 @@ int welcome_movie_map_init()
 int welcome_movie_map_show(void)
 {
     GAME_BASE_DEBUG("welcome_movie_show\r\n");
-    Show_main_dh();
+    system("cls");//ÇåÆÁ
+    system("color 31");
+    window_show_welcome_movie(welcome_movie_map.window);
 }
 
 int welcome_movie_map_select(char key)
 {
     GAME_BASE_DEBUG("welcome_movie_select : %c\r\n",key);
-    if(key == '1')      {
-        return GAME_MAP_FINISH;
-    }
-    return GAME_RUNNING;
+    welcome_map_list_t * list = welcome_map_list_get();
+    game_next_map_set(this_map,list->welcome_map);
+    return GAME_MAP_FINISH;
 }

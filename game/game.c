@@ -65,6 +65,7 @@ int game_run()
     } while(status != GAME_OVER &&  status != GAME_STORY_FINISH);
     game_story_end(gobel_game_config.game_current_story);
     //end game_story_list
+    return GAME_EXIT;
 }
 /*
  *  game_start 主要是初始化一些数据 以及读取数据
@@ -81,6 +82,8 @@ int game_start()
         //welcome界面 好比load 存档 设置模式 音效 文字 图形等等
         status = game_config();          //  在这里定义测试模式 或者用一个 welcome界面
     }while(0);
+
+    return GAME_TEST;
     return status;
 }
 
@@ -108,6 +111,18 @@ int game_map_set(game_map_t *map)
 {
     gobel_game_config.game_current_story->game_current_node->game_current_map = map;
     gobel_game_config.game_current_map = map;
+}
+
+int game_next_map_set(game_map_t *map,game_map_t *next_map)
+{
+    map->next_map = next_map;
+    game_callback_map_set(next_map,map);
+    return 0;
+}
+
+int game_callback_map_set(game_map_t *map,game_map_t *callback_map)
+{
+    map->callback_map = callback_map;
 }
 
 int game_status_set(int status)

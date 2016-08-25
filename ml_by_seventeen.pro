@@ -11,7 +11,6 @@ SOURCES += src/mielong2014050302.c \
     story/story.c \
     window/sl_window.c \
     data/sl_data.c \
-    window/city_window.c \
     map/city_map.c \
     map/main_map.c \
     map/map.c \
@@ -53,7 +52,25 @@ SOURCES += src/mielong2014050302.c \
     game/game_window_type.c \
     window/basic/select_list.c \
     window/basic/w_text.c \
-    story/game_story_init.c
+    story/game_story_init.c \
+    game/game_env.c \
+    map/file/file_map.c \
+    map/template_map.c \
+    window/file/file_main_window.c \
+    window/file/file_save_window.c \
+    window/file/file_load_window.c \
+    window/template_window.c \
+    window/welcome/welcome_window.c \
+    window/welcome/welcome_movie_window.c \
+    window/information/storybook_1_window.c \
+    node/new_game/new_game_node.c \
+    window/new_game/new_game_window.c \
+    window/include/sl_window.cpp \
+    window/city/city_window.c \
+    window/world_window.c \
+    window/basic/w_list.c \
+    window/basic/w_map.c \
+    window/basic/w_item.c
 
 
 include(deployment.pri)
@@ -68,7 +85,6 @@ HEADERS += \
     window/include/sl_window.h \
     data/include/sl_data.h \
     data/include/base_data.h \
-    window/include/city_window.h \
     map/include/city_map.h \
     map/include/main_map.h \
     map/include/map.h \
@@ -130,4 +146,19 @@ HEADERS += \
     game/game_window_type.h \
     window/basic/select_list.h \
     window/basic/w_list.h \
-    window/basic/w_text.h
+    window/basic/w_text.h \
+    game/game_env.h \
+    map/file/file_map.h \
+    window/file/file_main_window.h \
+    window/file/file_load_window.h \
+    window/file/file_save_window.h \
+    window/template_window.h \
+    map/template_map.h \
+    window/template.h \
+    window/welcome/welcome_movie_window.h \
+    window/information/storybook_1_window.h \
+    node/new_game/new_game_node.h \
+    window/new_game/new_game_window.h \
+    window/city/city_window.h \
+    window/basic/w_map.h \
+    window/basic/w_item.h

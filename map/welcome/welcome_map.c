@@ -1,16 +1,19 @@
-ï»¿
+
 #include "welcome_map.h"
 #include "game/game_goble.h"
 #include "game/game_debug.h"
-#include "window/basic/w_text.h"
+#include "window/welcome/welcome_window.h"
+
+
+#include "node/welcome/welcome_node.h"
 
 struct{
     game_map_t *map;
     //window
-    w_text_t*   text;
-    w_text_t*   text1;
-    w_text_t*   text2;
+    w_welcome_t *window;
 }welcome_map;
+
+static game_map_t *this_map = NULL;
 
 int welcome_map_handle(void);
 int welcome_map_show(void);
@@ -34,36 +37,49 @@ int welcome_map_init()
     welcome_map.map->_show = welcome_map_show;
     welcome_map.map->_select = welcome_map_select;
 
-    welcome_map.text = window_create_text(NULL);
-    window_set_text(welcome_map.text,"helloworld 1 2 3 4 5 6 7 \r\n");
-    window_set_position(welcome_map.text->window,10,10);
+    welcome_map.window = window_create_welcome(NULL,0,0,40,40);
 
-    welcome_map.text1 = window_create_text(NULL);
-    window_set_text(welcome_map.text1,"helloworld 1  \r\n");
-    window_set_position(welcome_map.text1->window,2,2);
-
-    welcome_map.text2 = window_create_text(NULL);
-    window_set_text(welcome_map.text2,"helloworld 2 \r\n");
-    window_set_position(welcome_map.text2->window,3,3);
-
+    this_map = welcome_map.map;
     return 0;   //INIT_OK
 }
 //int welcome_handle(void)
 //{
 
 //}
-
 int welcome_map_show(void)
 {
     GAME_BASE_DEBUG("welcome_show\r\n");
-    window_show_text(welcome_map.text);
-    window_show_text(welcome_map.text1);
-    window_show_text(welcome_map.text2);
+    system("cls");//ÇåÆÁ
+    window_show_welcome(welcome_map.window);
+    {
+         //test  ÒÔºóÒ»¶¨ÒªÉ¾³ý
+        #include"window/information/storybook_1_window.h"
+        w_storybook_1_t * window = window_create_storybook_1(NULL,0,0,10,10);
+        window_show_storybook_1(window);
+     }   //
+    return 0;
 }
 
 int welcome_map_select(char key)
 {
     GAME_BASE_DEBUG("welcome_select : %c\r\n",key);
-    if(key == '1') return GAME_MAP_FINISH;  //for test
-    return GAME_RUNNING;
+    welcome_map_list_t * list = welcome_map_list_get();
+    switch(key)
+    {
+    case 'a'|'A':
+        //game_next_map_set(this_map,list->new_game_map);
+        return GAME_NODE_FINISH;
+    case 'b'|'B':
+        game_next_map_set(this_map,list->file_map);   //¹Ø±Õ´°¿ÚºóÐèÒª·µ»Ø game_callback_map_set
+        return GAME_MAP_FINISH;
+    case 'c'|'C':
+        Show_main_menu_end();
+        return GAME_MAP_FINISH;
+    case 'w'|'W':
+       // Show_main_god_here();
+        return GAME_MAP_FINISH;
+    default:
+        return GAME_RUNNING;
+    }
+
 }

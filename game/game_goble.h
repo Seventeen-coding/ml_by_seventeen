@@ -9,7 +9,9 @@
 #include "game/game_window.h"
 
 typedef enum {
-    GAME_EXIT = -1,// -1
+
+    GAME_EXIT = -2,// -2
+    GAME_ERROR = -1,//-1
     GAME_OVER = 0,// 0
     GAME_START,   //1
     GAME_STOP,//  2
@@ -66,9 +68,15 @@ int game_status_set();
 
 //story node map set
 int game_story_set(game_story_t *story);
+
+//int game_next_story_set(game_map_t *story,game_map_t *story);
+
 int game_node_set(game_node_t *node);
+
+//int game_next_node_set(game_map_t *node,game_map_t *next_node);
+
 int game_map_set(game_map_t *map);
-
-
+int game_next_map_set(game_map_t *map, game_map_t *next_map);
+int game_callback_map_set(game_map_t *map,game_map_t *callback_map);
 #endif // GAME_GOBLE_H
 
