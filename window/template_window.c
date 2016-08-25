@@ -11,7 +11,7 @@ w_template_t *window_create_template(window_t *parent)
 
 }
 
-int    window_show_template(w_template_t*window)
+static int    __w_show_template(void *window)
 {
 
     return 0;

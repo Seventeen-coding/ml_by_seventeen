@@ -10,7 +10,7 @@ typedef enum{
     TEXT_END
 }text_control_t;
 
-typedef int (*w_text_set_text)(const char *text);
+typedef int (*w_text_set_text)(void *__this,const char *text);
 
 typedef struct {
     char *text;
@@ -19,7 +19,15 @@ typedef struct {
 }w_text_data_t;
 
 typedef struct {
-    game_window_function_t w_function;
+    //game_window_function_t w_function;
+    w_msg_handle      msg;
+    w_show_handle   show;
+    w_select_handle  select;
+    w_hide_handle     hide;
+    w_destory_handle    destory;
+
+    w_set_position   set_pos;
+    w_set_area          set_area;
     w_text_set_text set_text;
 }w_text_function_t;
 

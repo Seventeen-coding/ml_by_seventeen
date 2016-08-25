@@ -37,7 +37,7 @@ void Enter_city_select()
 
 void City_map()
 {
-    Show_city_menu();
-    Enter_city_select();
+ //   Show_city_menu();
+    //Enter_city_select();
 }
 

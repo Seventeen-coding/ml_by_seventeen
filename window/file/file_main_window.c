@@ -13,12 +13,12 @@ static w_file_main_t *__init(w_file_main_t *file_main)
     w_text_t * menu3 = window_create_text(window,8,6,strlen("Q--返回主菜单"),1);
     w_text_t * bottom = window_create_text(window,0,10,strlen("--------------------------------------------------------------"),1);
 
-    window_set_text(title,"------------------------【档案管理】--------------------------");
-    window_set_text(text,"请选择菜单进行档案操作！");
-    window_set_text(menu1,"S--存储档案");
-    window_set_text(menu2,"R--读取档案");
-    window_set_text(menu3," Q--返回主菜单");
-    window_set_text(bottom,"--------------------------------------------------------------");
+    title->function.set_text(title,"------------------------【档案管理】--------------------------");
+    text->function.set_text(text,"请选择菜单进行档案操作！");
+    menu1->function.set_text(menu1,"S--存储档案");
+    menu2->function.set_text(menu2,"R--读取档案");
+    menu3->function.set_text(menu3," Q--返回主菜单");
+    bottom->function.set_text(bottom,"--------------------------------------------------------------");
 
     file_main->window->data.__this = &file_main;
     file_main->title = title;
@@ -44,12 +44,12 @@ int    window_show_file_main(w_file_main_t*window)
 {
     system("color 30");         //以后可以用不同的颜色去表示
 
-    window->title->function.w_function.show(window->title);
-    window->text->function.w_function.show(window->text);
-    window->menu1->function.w_function.show(window->menu1);
-    window->menu2->function.w_function.show(window->menu2);
-    window->menu3->function.w_function.show(window->menu3);
-    window->bottom->function.w_function.show(window->bottom);
+    window->title->function.show(window->title);
+    window->text->function.show(window->text);
+    window->menu1->function.show(window->menu1);
+    window->menu2->function.show(window->menu2);
+    window->menu3->function.show(window->menu3);
+    window->bottom->function.show(window->bottom);
     return 0;
 }
 
@@ -57,12 +57,12 @@ int    window_hide_file_main(w_file_main_t*window)
 {
     system("color 30");         //以后可以用不同的颜色去表示
 
-    window->title->function.w_function.hide(window->title);
-    window->text->function.w_function.hide(window->text);
-    window->menu1->function.w_function.hide(window->menu1);
-    window->menu2->function.w_function.hide(window->menu2);
-    window->menu3->function.w_function.hide(window->menu3);
-    window->bottom->function.w_function.hide(window->bottom);
+    window->title->function.hide(window->title);
+    window->text->function.hide(window->text);
+    window->menu1->function.hide(window->menu1);
+    window->menu2->function.hide(window->menu2);
+    window->menu3->function.hide(window->menu3);
+    window->bottom->function.hide(window->bottom);
     return 0;
 }
 

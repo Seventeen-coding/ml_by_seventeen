@@ -15,6 +15,7 @@ typedef  struct{
     w_text_t *text;
     //data
     //w_storybook_1_data_t   data;
+
 }w_storybook_1_t;
 
 w_storybook_1_t *window_create_storybook_1(window_t *parent, int x, int y, int w, int h);

@@ -12,9 +12,9 @@ typedef enum {
 }new_game_ret_t;
 
 typedef struct{
-//    game_map_t *new_game_map;
+   // game_map_t *new_game_map;
 //    game_map_t *new_game_movie_map;
-    game_map_t *storybook_1_map;
+    //game_map_t *storybook_1_map;
 
 }new_game_map_list_t;
 

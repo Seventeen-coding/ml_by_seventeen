@@ -11,7 +11,7 @@ static w_storybook_1_t *__init(w_storybook_1_t *storybook_1)
 {
     window_t* window = storybook_1->window;
     w_text_t * text = window_create_text(window,2,20,20,8);
-    window_set_text(text,main_t);
+   text->function.set_text(text,main_t);
     storybook_1->window->data.__this = &storybook_1;
     storybook_1->text = text;
     return storybook_1;
@@ -29,14 +29,14 @@ w_storybook_1_t *window_create_storybook_1(window_t *parent,int x, int y,int w,i
 int    window_show_storybook_1(w_storybook_1_t*window)
 {
     system("color 30");         //以后可以用不同的颜色去表示
-    window->text->function.w_function.show(window->text);
+    window->text->function.show(window->text);
     return 0;
 }
 
 int    window_hide_storybook_1(w_storybook_1_t*window)
 {
     system("color 30");         //以后可以用不同的颜色去表示
-    window->text->function.w_function.hide(window->text);
+    window->text->function.hide(window->text);
     return 0;
 }
 

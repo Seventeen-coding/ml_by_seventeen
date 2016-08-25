@@ -10,13 +10,13 @@ static w_welcome_movie_t *__init(window_t *window)
     const char *bottom_text  = "*************************************************";
 
     welcome_movie_window->top = window_create_text(NULL,0,0,strlen(top_text),1);
-    window_set_text(welcome_movie_window->top,top_text);
+    welcome_movie_window->top->function.set_text(welcome_movie_window->top,top_text);
     welcome_movie_window->title = window_create_text(NULL,10,3,strlen(title_text),1);
-    window_set_text(welcome_movie_window->title,title_text);
+    welcome_movie_window->top->function.set_text(welcome_movie_window->title,title_text);
     welcome_movie_window->text = window_create_text(NULL,10,5,strlen(text_text),1);
-    window_set_text(welcome_movie_window->text,text_text);
+    welcome_movie_window->top->function.set_text(welcome_movie_window->text,text_text);
     welcome_movie_window->bottom = window_create_text(NULL,0,10,strlen(bottom_text),1);
-    window_set_text(welcome_movie_window->bottom,bottom_text);
+    welcome_movie_window->top->function.set_text(welcome_movie_window->bottom,bottom_text);
     return welcome_movie_window;
 }
 
@@ -31,10 +31,10 @@ w_welcome_movie_t *window_create_welcome_movie(window_t *parent,int x,int y,int 
 
 int    window_show_welcome_movie(w_welcome_movie_t*window)
 {
-    window->top->function.w_function.show(window->top);
-    window->title->function.w_function.show(window->title);
-    window->text->function.w_function.show(window->text);
-    window->bottom->function.w_function.show(window->bottom);
+    window->top->function.show(window->top);
+    window->title->function.show(window->title);
+    window->text->function.show(window->text);
+    window->bottom->function.show(window->bottom);
     return 0;
 }
 

@@ -82,6 +82,8 @@ int game_start()
         //welcome界面 好比load 存档 设置模式 音效 文字 图形等等
         status = game_config();          //  在这里定义测试模式 或者用一个 welcome界面
     }while(0);
+
+    return GAME_TEST;
     return status;
 }
 
